@@ -120,3 +120,31 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide scrollbar (Chrome, Safari) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar (Firefox + universal) */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Smooth horizontal scroll */
+.scroll-smooth-x {
+  scroll-behavior: smooth;
+}
+
+/* Extra optional enhancements (matches your vibe) */
+
+/* Make snapping smoother */
+.snap-x.snap-mandatory {
+  scroll-snap-type: x mandatory;
+}
+
+/* Improve momentum scrolling on iOS */
+.horizontal-scroll {
+  -webkit-overflow-scrolling: touch;
+}

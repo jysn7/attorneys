@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+import { useGsapEntrance } from "@/lib/useGsapEntrance";
 
 export default function HeroSlider() {
   const router = useRouter();
+  const ref = useGsapEntrance();
 
   const slides = [
     {
@@ -29,7 +31,7 @@ export default function HeroSlider() {
       desc: "Our firm represents clients across continents, securing outcomes in the most challenging international forums.",
     },
     {
-      img: "https://images.unsplash.com/photo-1478479474071-8a3014d422c8?q=80&w=2301&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       subtitle: "Regulatory Defense",
       title: (
         <>
@@ -45,16 +47,15 @@ export default function HeroSlider() {
   const next = () => setIndex((i) => (i + 1) % slides.length);
   const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
 
-  // Auto-slide
   useEffect(() => {
     const interval = setInterval(next, 6000);
     return () => clearInterval(interval);
-  }, []);
+  }, [next]);
 
   const slide = slides[index];
 
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex items-center overflow-hidden">
+    <section ref={ref} className="relative w-full h-screen min-h-[600px] flex items-center overflow-hidden">
       {/* Background */}
       <div
         key={slide.img}
@@ -62,11 +63,12 @@ export default function HeroSlider() {
       >
         <img
           src={slide.img}
+          alt={typeof slide.title === "string" ? slide.title : "Hero background"}
           className="w-full h-full object-cover opacity-30 grayscale contrast-125"
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-0"></div>
+      <div className="absolute inset-0 bg-linear-to-r from-black via-black/70 to-transparent z-0"></div>
 
       <div className="relative z-10 w-full px-6 md:px-16 lg:px-24 grid grid-cols-1 lg:grid-cols-12 items-end pb-24 h-full">
         {/* Counter */}
@@ -83,7 +85,7 @@ export default function HeroSlider() {
         <div className="lg:col-span-8 flex flex-col justify-end h-full pb-12">
           <div className="slide-visible slide-content">
             <div className="flex items-center gap-3 text-amber-200 font-medium tracking-widest text-xs uppercase mb-6">
-              <span className="w-12 h-[1px] bg-amber-200"></span>
+              <span className="w-12 h-px bg-amber-200"></span>
               <span>{slide.subtitle}</span>
             </div>
 

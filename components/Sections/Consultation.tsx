@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { useGsapEntrance } from "@/lib/useGsapEntrance";
 
 export const ConsultationSection = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ export const ConsultationSection = () => {
     email: "",
     matter: "",
   });
+  const ref = useGsapEntrance();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -21,13 +23,13 @@ export const ConsultationSection = () => {
   };
 
   return (
-    <div id="page-consultation" className="pt-24 md:pt-0">
+    <div ref={ref} id="page-consultation" className="pt-24 md:pt-0">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
         {/* Contact Info */}
         <div className="bg-neutral-900 p-6 md:p-24 flex flex-col justify-between border-r border-white/5">
           <div>
             <span className="text-xs font-medium tracking-widest text-amber-500/80 uppercase mb-4 block">Get in Touch</span>
-            <h1 className="text-4xl md:text-6xl font-serif text-white mb-8">Let's discuss your defense strategy.</h1>
+            <h1 className="text-4xl md:text-6xl font-serif text-white mb-8">Let&apos;s discuss your defense strategy.</h1>
             <p className="text-neutral-400 text-lg leading-relaxed max-w-md">
               Strict confidentiality is maintained from the first interaction. Our intake team is available 24/7 for urgent matters.
             </p>
@@ -36,16 +38,16 @@ export const ConsultationSection = () => {
           <div className="mt-16 flex flex-col gap-8">
             <div>
               <div className="text-xs uppercase tracking-widest text-neutral-500 mb-2">Headquarters</div>
-              <div className="text-white text-lg">30 Rockefeller Plaza, Pretoria, PTA</div>
+              <div className="text-white text-lg">Brooklyn Bridge Office Park, 105 Brooks Street, Brooklyn, Pretoria, South Africa</div>
             </div>
             <div>
               <div className="text-xs uppercase tracking-widest text-neutral-500 mb-2">Direct Line</div>
-              <div className="text-white text-lg">(012) 345-6789</div>
+              <div className="text-white text-lg">+27 12 555 1234</div>
             </div>
             <div>
               <div className="text-xs uppercase tracking-widest text-neutral-500 mb-2">Secure Email</div>
               <div className="text-white text-lg hover:text-amber-200 cursor-pointer transition-colors">
-                counsel@sterlinghart.com
+                info@sterlinghart.co.za
               </div>
             </div>
           </div>

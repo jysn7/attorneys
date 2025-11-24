@@ -1,5 +1,4 @@
-'use client';
-import { useState } from 'react';
+"use client";
 import { useRouter } from 'next/router';
 
 export default function Header() {

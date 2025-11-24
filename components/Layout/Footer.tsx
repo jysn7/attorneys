@@ -1,4 +1,5 @@
-'use client';
+"use client";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -13,10 +14,10 @@ export function Footer() {
         <div>
           <h3 className="text-white uppercase tracking-widest text-xs mb-4">Quick Links</h3>
           <ul className="flex flex-col gap-2">
-            <li><a href="/" className="hover:text-amber-200 transition-colors">Home</a></li>
-            <li><a href="/attorneys" className="hover:text-amber-200 transition-colors">Team</a></li>
-            <li><a href="/cases" className="hover:text-amber-200 transition-colors">Case Results</a></li>
-            <li><a href="/consultation" className="hover:text-amber-200 transition-colors">Contact</a></li>
+            <li><Link href="/" className="hover:text-amber-200 transition-colors">Home</Link></li>
+            <li><Link href="/attorneys" className="hover:text-amber-200 transition-colors">Team</Link></li>
+            <li><Link href="/cases" className="hover:text-amber-200 transition-colors">Case Results</Link></li>
+            <li><Link href="/consultation" className="hover:text-amber-200 transition-colors">Contact</Link></li>
           </ul>
         </div>
         <div>
